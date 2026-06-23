@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0f;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #e8e8f0;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#overlay > * {
+  pointer-events: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Menu */
+#menu {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, rgba(20, 10, 40, 0.92) 0%, rgba(5, 5, 15, 0.97) 70%);
+  backdrop-filter: blur(4px);
+}
+
+#menu h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.25em;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff4466, #ffaa00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #8888aa;
+  margin-bottom: 2.5rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: #aaaacc;
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+button {
+  padding: 0.85rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #ff4466, #cc2244);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 24px rgba(255, 68, 102, 0.35);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 32px rgba(255, 68, 102, 0.5);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* HUD */
+#hud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hud-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 180px;
+}
+
+.stat .label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: #8888aa;
+}
+
+.bar-wrap {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  transition: width 0.2s;
+}
+
+.player-bar {
+  background: linear-gradient(90deg, #44ff88, #22cc66);
+}
+
+.enemy-bar {
+  background: linear-gradient(90deg, #ff4466, #cc2244);
+}
+
+#score {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ccccee;
+}
+
+#crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 6px rgba(255, 68, 102, 0.6);
+  user-select: none;
+}
+
+#message {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: #aaaacc;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#message.show {
+  opacity: 1;
+}
+
+/* Game Over */
+#game-over {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 5, 15, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+#game-over h2 {
+  font-size: 3rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+#game-over h2.win {
+  color: #44ff88;
+}
+
+#game-over h2.lose {
+  color: #ff4466;
+}
+
+#result-text {
+  color: #8888aa;
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arena Strike — 3D FPS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="overlay">
+    <div id="menu">
+      <h1>ARENA STRIKE</h1>
+      <p class="subtitle">1v1 Arena Combat</p>
+      <div class="controls">
+        <div class="control-row"><kbd>↑</kbd><kbd>↓</kbd> Move forward / back</div>
+        <div class="control-row"><kbd>←</kbd><kbd>→</kbd> Turn left / right</div>
+        <div class="control-row"><kbd>Space</kbd> Shoot</div>
+      </div>
+      <button id="start-btn">Enter Arena</button>
+    </div>
+    <div id="hud" class="hidden">
+      <div class="hud-top">
+        <div class="stat">
+          <span class="label">YOU</span>
+          <div class="bar-wrap"><div id="player-hp" class="bar player-bar"></div></div>
+        </div>
+        <div id="score">0 — 0</div>
+        <div class="stat">
+          <span class="label">BOT</span>
+          <div class="bar-wrap"><div id="enemy-hp" class="bar enemy-bar"></div></div>
+        </div>
+      </div>
+      <div id="crosshair">+</div>
+      <div id="message"></div>
+    </div>
+    <div id="game-over" class="hidden">
+      <h2 id="result-title">Victory!</h2>
+      <p id="result-text">You eliminated the bot.</p>
+      <button id="restart-btn">Play Again</button>
+    </div>
+  </div>
+  <canvas id="game-canvas"></canvas>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
